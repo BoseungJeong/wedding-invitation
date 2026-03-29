@@ -35,6 +35,7 @@ jobs:
         env:
           VITE_NAVER_MAP_CLIENT_ID: ${{ secrets.VITE_NAVER_MAP_CLIENT_ID }}
           VITE_KAKAO_SDK_JS_KEY: ${{ secrets.VITE_KAKAO_SDK_JS_KEY }}
+          VITE_SERVER_URL: ${{ secrets.VITE_SERVER_URL }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
