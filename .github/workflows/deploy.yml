@@ -1,58 +1,50 @@
-name: Deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
-  workflow_dispatch:
+    branches:
+      - main
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
-      - name: Setup Environment Variables
-        run: |
-          echo "VITE_NAVER_MAP_CLIENT_ID=$VITE_NAVER_MAP_CLIENT_ID
-          VITE_KAKAO_SDK_JS_KEY=$VITE_KAKAO_SDK_JS_KEY
-          VITE_SERVER_URL=$VITE_SERVER_URL
-          VITE_STATIC_ONLY=$VITE_STATIC_ONLY" >> .env
-        env:
-          VITE_NAVER_MAP_CLIENT_ID: ${{ secrets.VITE_NAVER_MAP_CLIENT_ID }}
-          VITE_KAKAO_SDK_JS_KEY: ${{ secrets.VITE_KAKAO_SDK_JS_KEY }}
-          VITE_SERVER_URL: ${{ vars.VITE_SERVER_URL }}
-          VITE_STATIC_ONLY: ${{ vars.VITE_STATIC_ONLY }}
-
-      - name: Use Node.js 22.x
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22.x
+          node-version: 20
+          cache: "npm"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
         run: npm run build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./build"
+          path: build
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
