@@ -25,7 +25,7 @@ export const SHARE_ADDRESS = LOCATION
 export const SHARE_ADDRESS_TITLE = LOCATION
 
 // 네이버 지도 및 카카오 네비게이션에 사용할 좌표. [경도, 위도] 형식.
-export const WEDDING_HALL_POSITION = [127.3129, 36.3519]
+export const WEDDING_HALL_POSITION = [127.333649072247, 36.333056192309]
 
 // 네이버 지도의 웨딩홀 장소 ID
 // 네이버 지도 웹페이지에서 웨딩홀 검색 후 URL에서 확인 가능.
@@ -35,7 +35,7 @@ export const NMAP_PLACE_ID = 37638309
 // 카카오 지도의 웨딩홀 장소 ID
 // 카카오 지도 웹페이지에서 웨딩홀 검색 후 해당 장소에서 상세보기 클릭 시 URL에서 확인 가능.
 // 예: https://place.map.kakao.com/8634826 -> 8634826
-export const KMAP_PLACE_ID = 1194265352
+export const KMAP_PLACE_ID = 27596552
 
 export const BRIDE_FULLNAME = "윤애니"
 export const BRIDE_FIRSTNAME = "애니"
