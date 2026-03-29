@@ -9,12 +9,14 @@ import { Information } from "./component/information"
 import { GuestBook } from "./component/guestbook"
 import { LazyDiv } from "./component/lazyDiv"
 import { ShareButton } from "./component/shareButton"
+import { MusicPlayer } from "./component/musicPlayer"
 import { STATIC_ONLY } from "./env"
 
 function App() {
   return (
     <div className="background">
       <BGEffect />
+      <MusicPlayer />
       <div className="card-view">
         <LazyDiv className="card-group">
           {/* 표지 */}

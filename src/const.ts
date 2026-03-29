@@ -37,6 +37,8 @@ export const NMAP_PLACE_ID = 37638309
 // 예: https://place.map.kakao.com/8634826 -> 8634826
 export const KMAP_PLACE_ID = 27596552
 
+export const MUSIC_YOUTUBE_ID = "L4KAQVcDbvo"
+
 export const BRIDE_FULLNAME = "윤애니"
 export const BRIDE_FIRSTNAME = "애니"
 export const BRIDE_TITLE = "장녀"

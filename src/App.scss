@@ -9,12 +9,13 @@
 @use "./component/guestbook";
 @use "./component/modal";
 @use "./component/shareButton";
+@use "./component/musicPlayer";
 
 :root {
-  --theme-color: #ff8585;
-  --theme-bg-color: #ffe7e7;
-  --alt-color: #c28080;
-  --alt-bg-color: #f4f0f0;
+  --theme-color: #85c285;
+  --theme-bg-color: #e7f5e7;
+  --alt-color: #5a8f5a;
+  --alt-bg-color: #f0f7ee;
   --dark-color: #282c34;
   --dark-grey-color: #d2d2d2;
   --light-grey-color: #eaeaea;
