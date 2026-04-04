@@ -21,15 +21,18 @@ export const MusicPlayer = () => {
       playerRef.current = new window.YT.Player("yt-music-player", {
         videoId: MUSIC_YOUTUBE_ID,
         playerVars: {
-          autoplay: 0,
+          autoplay: 1,
           controls: 0,
           loop: 1,
           playlist: MUSIC_YOUTUBE_ID,
           playsinline: 1,
+          mute: 1,
         },
         events: {
-          onReady: () => {
+          onReady: (e) => {
             readyRef.current = true
+            e.target.playVideo()
+            e.target.unMute()
           },
           onStateChange: (e) => {
             setPlaying(e.data === window.YT.PlayerState.PLAYING)
