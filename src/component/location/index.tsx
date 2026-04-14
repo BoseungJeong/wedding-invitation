@@ -2,7 +2,7 @@ import { Map } from "./map"
 import CarIcon from "../../icons/car-icon.svg?react"
 import BusIcon from "../../icons/bus-icon.svg?react"
 import { LazyDiv } from "../lazyDiv"
-import { LOCATION, LOCATION_ADDRESS } from "../../const"
+import { LOCATION } from "../../const"
 
 export const Location = () => {
   return (
@@ -11,7 +11,6 @@ export const Location = () => {
         <h2 className="english">Location</h2>
         <div className="addr">
           {LOCATION}
-          <div className="detail">{LOCATION_ADDRESS}</div>
         </div>
         <Map />
       </LazyDiv>
