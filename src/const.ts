@@ -41,9 +41,9 @@ export const MUSIC_YOUTUBE_ID = "L4KAQVcDbvo"
 
 // 셔틀버스 안내
 export const SHUTTLE_BUS_TIME = "오전 10시"
-export const SHUTTLE_BUS_LOCATION = "영천시청 마당"
+export const SHUTTLE_BUS_LOCATION = "영천시청 주차장"
 export const SHUTTLE_BUS_ADDRESS = "경북 영천시 시청로 16"
-export const SHUTTLE_BUS_NMAP_URL = "https://naver.me/5mvz4eDm"
+export const SHUTTLE_BUS_NMAP_URL = "https://naver.me/xRgkAVFv"
 // 영천시청 좌표 [경도, 위도]
 export const SHUTTLE_BUS_POSITION = [128.9385, 35.9733]
 
