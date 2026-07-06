@@ -2,17 +2,32 @@ import { Map } from "./map"
 import CarIcon from "../../icons/car-icon.svg?react"
 import BusIcon from "../../icons/bus-icon.svg?react"
 import nmapIcon from "../../icons/nmap-icon.png"
+import knaviIcon from "../../icons/knavi-icon.png"
+import tmapIcon from "../../icons/tmap-icon.png"
 import { LazyDiv } from "../lazyDiv"
-import { Button } from "../button"
+import { useKakao } from "../store"
 import {
   LOCATION,
   SHUTTLE_BUS_ADDRESS,
   SHUTTLE_BUS_LOCATION,
   SHUTTLE_BUS_NMAP_URL,
+  SHUTTLE_BUS_POSITION,
   SHUTTLE_BUS_TIME,
 } from "../../const"
 
+const checkDevice = () => {
+  const userAgent = window.navigator.userAgent
+  if (userAgent.match(/(iPhone|iPod|iPad)/)) {
+    return "ios"
+  } else if (userAgent.match(/(Android)/)) {
+    return "android"
+  } else {
+    return "other"
+  }
+}
+
 export const Location = () => {
+  const kakao = useKakao()
   return (
     <>
       <LazyDiv className="card location">
@@ -32,24 +47,66 @@ export const Location = () => {
             <br />
             <span className="detail">{SHUTTLE_BUS_ADDRESS}</span>
           </div>
-          <Button
-            style={{ width: "100%" }}
+        </div>
+        <div className="navigation">
+          <button
             onClick={() => {
               window.open(SHUTTLE_BUS_NMAP_URL, "_blank")
             }}
           >
-            <img
-              src={nmapIcon}
-              alt="naver-map-icon"
-              style={{
-                width: "0.9rem",
-                height: "0.9rem",
-                verticalAlign: "middle",
-                marginRight: "0.4rem",
-              }}
-            />
-            네이버 지도로 보기
-          </Button>
+            <img src={nmapIcon} alt="naver-map-icon" />
+            네이버 지도
+          </button>
+          <button
+            onClick={() => {
+              switch (checkDevice()) {
+                case "ios":
+                case "android":
+                  if (kakao)
+                    kakao.Navi.start({
+                      name: SHUTTLE_BUS_LOCATION,
+                      x: SHUTTLE_BUS_POSITION[0],
+                      y: SHUTTLE_BUS_POSITION[1],
+                      coordType: "wgs84",
+                    })
+                  break
+                default:
+                  window.open(
+                    `https://map.kakao.com/link/search/${encodeURIComponent(
+                      SHUTTLE_BUS_LOCATION,
+                    )}`,
+                    "_blank",
+                  )
+                  break
+              }
+            }}
+          >
+            <img src={knaviIcon} alt="kakao-navi-icon" />
+            카카오 내비
+          </button>
+          <button
+            onClick={() => {
+              switch (checkDevice()) {
+                case "ios":
+                case "android": {
+                  const params = new URLSearchParams({
+                    goalx: SHUTTLE_BUS_POSITION[0].toString(),
+                    goaly: SHUTTLE_BUS_POSITION[1].toString(),
+                    goalName: SHUTTLE_BUS_LOCATION,
+                  })
+                  window.open(`tmap://route?${params.toString()}`, "_self")
+                  break
+                }
+                default: {
+                  alert("모바일에서 확인하실 수 있습니다.")
+                  break
+                }
+              }
+            }}
+          >
+            <img src={tmapIcon} alt="t-map-icon" />
+            티맵
+          </button>
         </div>
         <div className="location-info">
           <div className="transportation-icon-wrapper">

@@ -93,8 +93,8 @@
   .shuttle-bus {
     background-color: var(--alt-bg-color);
     padding: 1rem;
-    border-radius: 0.5rem;
-    margin: 0.5rem 0 1.5rem 0;
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin: 0.5rem 0 0 0;
     text-align: left;
 
     .heading {
@@ -108,7 +108,6 @@
     .content {
       font-size: 0.9rem;
       line-height: 1.7;
-      margin-bottom: 0.8rem;
       padding-left: 0.5rem;
 
       .detail {
@@ -116,6 +115,11 @@
         font-size: 0.85rem;
       }
     }
+  }
+
+  .shuttle-bus + .navigation {
+    border-radius: 0 0 0.5rem 0.5rem;
+    margin-bottom: 1rem;
   }
 
   .location-info {
