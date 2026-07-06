@@ -39,7 +39,7 @@ export const Location = () => {
       </LazyDiv>
       <LazyDiv className="card location">
         <div className="shuttle-bus">
-          <div className="heading">🚌 셔틀버스 안내</div>
+          <div className="heading">🚌 하객 버스 안내</div>
           <div className="content">
             <b>출발 시간</b>: {SHUTTLE_BUS_TIME}
             <br />
