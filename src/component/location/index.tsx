@@ -139,8 +139,6 @@ export const Location = () => {
             티맵
           </button>
         </div>
-
-        <div className="thank-you">감사합니다.</div>
       </LazyDiv>
 
       <LazyDiv className="card location">
