@@ -1,6 +1,9 @@
 import { Map } from "./map"
+import { ShuttleBusMap } from "./shuttleBusMap"
 import CarIcon from "../../icons/car-icon.svg?react"
 import BusIcon from "../../icons/bus-icon.svg?react"
+import ClockIcon from "../../icons/clock-icon.svg?react"
+import MarkerIcon from "../../icons/marker-icon.svg?react"
 import nmapIcon from "../../icons/nmap-icon.png"
 import knaviIcon from "../../icons/knavi-icon.png"
 import tmapIcon from "../../icons/tmap-icon.png"
@@ -37,17 +40,45 @@ export const Location = () => {
         </div>
         <Map />
       </LazyDiv>
-      <LazyDiv className="card location">
-        <div className="shuttle-bus">
-          <div className="heading">🚌 하객 버스 안내</div>
-          <div className="content">
-            <b>출발 시간</b>: {SHUTTLE_BUS_TIME}
+
+      <LazyDiv className="card location shuttle-bus-card">
+        <div className="shuttle-header">
+          <div className="english script">for our guests</div>
+          <div className="main-title">하객 버스 안내</div>
+          <div className="divider">
+            <span></span>
+            <span className="heart">♥</span>
+            <span></span>
+          </div>
+          <div className="intro">
+            영천에서 오시는 하객분들을 위해
             <br />
-            <b>출발 장소</b>: {SHUTTLE_BUS_LOCATION}
-            <br />
-            <span className="detail">{SHUTTLE_BUS_ADDRESS}</span>
+            버스를 준비했습니다.
           </div>
         </div>
+
+        <ShuttleBusMap />
+
+        <div className="shuttle-info">
+          <div className="info-row">
+            <div className="icon-wrap"><ClockIcon /></div>
+            <div className="label">출발 시간</div>
+            <div className="value">{SHUTTLE_BUS_TIME}</div>
+          </div>
+          <div className="info-divider" />
+          <div className="info-row">
+            <div className="icon-wrap"><BusIcon /></div>
+            <div className="label">출발 장소</div>
+            <div className="value">{SHUTTLE_BUS_LOCATION}</div>
+          </div>
+          <div className="info-divider" />
+          <div className="info-row">
+            <div className="icon-wrap"><MarkerIcon /></div>
+            <div className="label">주 소</div>
+            <div className="value">{SHUTTLE_BUS_ADDRESS}</div>
+          </div>
+        </div>
+
         <div className="navigation">
           <button
             onClick={() => {
@@ -108,6 +139,11 @@ export const Location = () => {
             티맵
           </button>
         </div>
+
+        <div className="thank-you">감사합니다.</div>
+      </LazyDiv>
+
+      <LazyDiv className="card location">
         <div className="location-info">
           <div className="transportation-icon-wrapper">
             <CarIcon className="transportation-icon" />
