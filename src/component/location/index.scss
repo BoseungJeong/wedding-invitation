@@ -144,16 +144,14 @@
   }
 
   .shuttle-map {
-    perspective: 900px;
     padding: 0.5rem 0;
     margin-bottom: 1rem;
 
-    .shuttle-map-svg {
+    .shuttle-map-img {
       width: 100%;
       height: auto;
       display: block;
-      transform: rotateX(6deg);
-      transform-origin: center bottom;
+      border-radius: 0.4rem;
     }
   }
 
