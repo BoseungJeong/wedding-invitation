@@ -90,36 +90,126 @@
     }
   }
 
-  .shuttle-bus {
-    background-color: var(--alt-bg-color);
-    padding: 1rem;
-    border-radius: 0.5rem 0.5rem 0 0;
-    margin: 0.5rem 0 0 0;
-    text-align: left;
+  .shuttle-header {
+    text-align: center;
+    padding: 0.5rem 0 1.2rem;
 
-    .heading {
-      font-size: 1rem;
-      font-weight: bold;
+    .english.script {
+      font-family: "Allura";
+      font-size: 1.3rem;
       color: var(--theme-color);
-      text-align: center;
-      margin-bottom: 0.7rem;
+      opacity: 0.85;
+      margin-bottom: 0.3rem;
     }
 
-    .content {
+    .main-title {
+      font-size: 1.6rem;
+      color: var(--dark-color);
+      letter-spacing: 0.15rem;
+      font-weight: normal;
+      margin-bottom: 0.6rem;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 0.9rem;
+
+      > span {
+        display: block;
+        width: 2rem;
+        height: 1px;
+        background-color: var(--theme-color);
+        opacity: 0.5;
+      }
+
+      .heart {
+        width: auto;
+        height: auto;
+        background: none;
+        color: var(--theme-color);
+        font-size: 0.7rem;
+        opacity: 0.8;
+      }
+    }
+
+    .intro {
       font-size: 0.9rem;
       line-height: 1.7;
-      padding-left: 0.5rem;
-
-      .detail {
-        opacity: 0.6;
-        font-size: 0.85rem;
-      }
+      color: var(--dark-color);
+      opacity: 0.75;
     }
   }
 
-  .shuttle-bus + .navigation {
-    border-radius: 0 0 0.5rem 0.5rem;
+  .shuttle-map {
+    perspective: 900px;
+    padding: 0.5rem 0;
     margin-bottom: 1rem;
+
+    .shuttle-map-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      transform: rotateX(6deg);
+      transform-origin: center bottom;
+    }
+  }
+
+  .shuttle-info {
+    background-color: var(--alt-bg-color);
+    border-radius: 0.6rem;
+    padding: 1rem 1.2rem;
+    margin: 0.5rem 0 1rem;
+
+    .info-row {
+      display: grid;
+      grid-template-columns: 1.7rem 4.5rem 1fr;
+      align-items: center;
+      column-gap: 0.6rem;
+      padding: 0.6rem 0;
+
+      .icon-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+          width: 1.1rem;
+          height: 1.1rem;
+          fill: var(--alt-color);
+          opacity: 0.75;
+        }
+      }
+
+      .label {
+        font-size: 0.85rem;
+        color: var(--alt-color);
+        opacity: 0.9;
+        letter-spacing: 0.1rem;
+      }
+
+      .value {
+        font-size: 0.95rem;
+        color: var(--dark-color);
+        text-align: left;
+      }
+    }
+
+    .info-divider {
+      height: 1px;
+      background-color: var(--theme-color);
+      opacity: 0.2;
+    }
+  }
+
+  .thank-you {
+    font-family: "Allura";
+    font-size: 1.6rem;
+    color: var(--theme-color);
+    text-align: center;
+    padding: 1.2rem 0 0.5rem;
+    opacity: 0.85;
   }
 
   .location-info {
