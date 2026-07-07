@@ -1,5 +1,4 @@
 import { Map } from "./map"
-import { ShuttleBusMap } from "./shuttleBusMap"
 import CarIcon from "../../icons/car-icon.svg?react"
 import BusIcon from "../../icons/bus-icon.svg?react"
 import ClockIcon from "../../icons/clock-icon.svg?react"
@@ -56,8 +55,6 @@ export const Location = () => {
             버스를 준비했습니다.
           </div>
         </div>
-
-        <ShuttleBusMap />
 
         <div className="shuttle-info">
           <div className="info-row">
