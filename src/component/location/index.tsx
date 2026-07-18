@@ -1,8 +1,8 @@
 import { Map } from "./map"
 import CarIcon from "../../icons/car-icon.svg?react"
 import BusIcon from "../../icons/bus-icon.svg?react"
-import ClockIcon from "../../icons/clock-icon.svg?react"
-import MarkerIcon from "../../icons/marker-icon.svg?react"
+import PhoneIcon from "../../icons/phone-flip-icon.svg?react"
+import PersonIcon from "../../icons/person-icon.svg?react"
 import nmapIcon from "../../icons/nmap-icon.png"
 import knaviIcon from "../../icons/knavi-icon.png"
 import tmapIcon from "../../icons/tmap-icon.png"
@@ -10,11 +10,14 @@ import { LazyDiv } from "../lazyDiv"
 import { useKakao } from "../store"
 import {
   LOCATION,
-  SHUTTLE_BUS_ADDRESS,
+  SHUTTLE_BUS_DRIVER_PHONE,
+  SHUTTLE_BUS_ESCORT_NAME,
+  SHUTTLE_BUS_ESCORT_PHONE,
   SHUTTLE_BUS_LOCATION,
   SHUTTLE_BUS_NMAP_URL,
   SHUTTLE_BUS_POSITION,
-  SHUTTLE_BUS_TIME,
+  SHUTTLE_BUS_ROUTE,
+  SHUTTLE_BUS_VEHICLE,
 } from "../../const"
 
 const checkDevice = () => {
@@ -56,23 +59,56 @@ export const Location = () => {
           </div>
         </div>
 
-        <div className="shuttle-info">
-          <div className="info-row">
-            <div className="icon-wrap"><ClockIcon /></div>
-            <div className="label">출발 시간</div>
-            <div className="value">{SHUTTLE_BUS_TIME}</div>
+        <div className="shuttle-section">
+          <div className="section-label">운행 경로</div>
+          <div className="route-timeline">
+            {SHUTTLE_BUS_ROUTE.map((stop, idx) => (
+              <div key={idx} className="route-stop">
+                <div className="stop-marker">
+                  <div className="dot" />
+                  {idx < SHUTTLE_BUS_ROUTE.length - 1 && (
+                    <div className="line" />
+                  )}
+                </div>
+                <div className="stop-body">
+                  <div className="stop-time">{stop.time}</div>
+                  <div className="stop-name">{stop.name}</div>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="info-divider" />
-          <div className="info-row">
-            <div className="icon-wrap"><BusIcon /></div>
-            <div className="label">출발 장소</div>
-            <div className="value">{SHUTTLE_BUS_LOCATION}</div>
-          </div>
-          <div className="info-divider" />
-          <div className="info-row">
-            <div className="icon-wrap"><MarkerIcon /></div>
-            <div className="label">주 소</div>
-            <div className="value">{SHUTTLE_BUS_ADDRESS}</div>
+        </div>
+
+        <div className="shuttle-section">
+          <div className="section-label">차량 · 인솔 안내</div>
+          <div className="shuttle-info">
+            <div className="info-row">
+              <div className="icon-wrap"><BusIcon /></div>
+              <div className="label">차량번호</div>
+              <div className="value">{SHUTTLE_BUS_VEHICLE}</div>
+            </div>
+            <div className="info-divider" />
+            <div className="info-row">
+              <div className="icon-wrap"><PhoneIcon /></div>
+              <div className="label">기사님</div>
+              <div className="value">
+                <a href={`tel:${SHUTTLE_BUS_DRIVER_PHONE.replace(/-/g, "")}`}>
+                  {SHUTTLE_BUS_DRIVER_PHONE}
+                </a>
+              </div>
+            </div>
+            <div className="info-divider" />
+            <div className="info-row">
+              <div className="icon-wrap"><PersonIcon /></div>
+              <div className="label">인솔자</div>
+              <div className="value">
+                {SHUTTLE_BUS_ESCORT_NAME}
+                <br />
+                <a href={`tel:${SHUTTLE_BUS_ESCORT_PHONE.replace(/-/g, "")}`}>
+                  {SHUTTLE_BUS_ESCORT_PHONE}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
