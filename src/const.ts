@@ -39,13 +39,25 @@ export const KMAP_PLACE_ID = 27596552
 
 export const MUSIC_YOUTUBE_ID = "L4KAQVcDbvo"
 
-// 셔틀버스 안내
-export const SHUTTLE_BUS_TIME = "오전 10시"
+// 하객 버스 안내
 export const SHUTTLE_BUS_LOCATION = "영천시청 주차장"
 export const SHUTTLE_BUS_ADDRESS = "경북 영천시 시청로 16"
 export const SHUTTLE_BUS_NMAP_URL = "https://naver.me/xRgkAVFv"
 // 영천시청 좌표 [경도, 위도]
 export const SHUTTLE_BUS_POSITION = [128.9385, 35.9733]
+
+// 운행 경로 (시간순)
+export const SHUTTLE_BUS_ROUTE = [
+  { name: "영천시청 주차장", time: "오전 9:30" },
+  { name: "하양역", time: "오전 9:45" },
+  { name: "반야월 이마트", time: "오전 10:00" },
+]
+
+// 차량 & 인솔 정보
+export const SHUTTLE_BUS_VEHICLE = "경북 75바 5903"
+export const SHUTTLE_BUS_DRIVER_PHONE = "010-6478-4982"
+export const SHUTTLE_BUS_ESCORT_NAME = "김원섭"
+export const SHUTTLE_BUS_ESCORT_PHONE = "010-6658-0104"
 
 export const BRIDE_FULLNAME = "윤애니"
 export const BRIDE_FIRSTNAME = "애니"
