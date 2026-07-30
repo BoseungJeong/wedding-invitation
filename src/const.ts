@@ -46,18 +46,31 @@ export const SHUTTLE_BUS_NMAP_URL = "https://naver.me/xRgkAVFv"
 // 영천시청 좌표 [경도, 위도]
 export const SHUTTLE_BUS_POSITION = [128.9385, 35.9733]
 
-// 운행 경로 (시간순)
-export const SHUTTLE_BUS_ROUTE = [
-  { name: "영천시청 주차장", time: "오전 9:30" },
-  { name: "하양역", time: "오전 9:45" },
-  { name: "반야월 이마트", time: "오전 10:00" },
+// 버스별 상세 정보
+export const SHUTTLE_BUSES = [
+  {
+    number: "1호차",
+    stops: [
+      { name: "영천시청 주차장", time: "09:30" },
+      { name: "하양역", time: "09:45" },
+      { name: "반야월 이마트", time: "10:00" },
+    ],
+    destination: "대전",
+    vehicle: { number: "경북 75바 5903", company: "다인관광" },
+    driver: { name: "박종영", phone: "010-6478-4982" },
+    escort: { name: "김원섭", phone: "010-6658-0104" },
+  },
+  {
+    number: "2호차",
+    stops: [
+      { name: "영천시청 주차장", time: "10:00" },
+    ],
+    destination: "대전",
+    vehicle: { number: "대구 70바 2370", company: "신프린스관광" },
+    driver: { name: "이동근", phone: "010-2591-4694" },
+    escort: { name: "김희승", phone: "010-4810-0665" },
+  },
 ]
-
-// 차량 & 인솔 정보
-export const SHUTTLE_BUS_VEHICLE = "경북 75바 5903"
-export const SHUTTLE_BUS_DRIVER_PHONE = "010-6478-4982"
-export const SHUTTLE_BUS_ESCORT_NAME = "김원섭"
-export const SHUTTLE_BUS_ESCORT_PHONE = "010-6658-0104"
 
 export const BRIDE_FULLNAME = "윤애니"
 export const BRIDE_FIRSTNAME = "애니"
