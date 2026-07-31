@@ -1,8 +1,8 @@
+import { useEffect, useRef, useState } from "react"
 import { Map } from "./map"
 import CarIcon from "../../icons/car-icon.svg?react"
 import BusIcon from "../../icons/bus-icon.svg?react"
 import ClockIcon from "../../icons/clock-icon.svg?react"
-import MarkerIcon from "../../icons/marker-icon.svg?react"
 import PersonIcon from "../../icons/person-icon.svg?react"
 import nmapIcon from "../../icons/nmap-icon.png"
 import knaviIcon from "../../icons/knavi-icon.png"
@@ -16,6 +16,50 @@ import {
   SHUTTLE_BUS_NMAP_URL,
   SHUTTLE_BUS_POSITION,
 } from "../../const"
+
+const ContactPopover = ({ phone }: { phone: string }) => {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    const handler = (e: Event) => {
+      if (!ref.current?.contains(e.target as Node)) setOpen(false)
+    }
+    document.addEventListener("mousedown", handler)
+    document.addEventListener("touchstart", handler)
+    return () => {
+      document.removeEventListener("mousedown", handler)
+      document.removeEventListener("touchstart", handler)
+    }
+  }, [open])
+
+  return (
+    <span className="contact-popover-wrap" ref={ref}>
+      <button
+        type="button"
+        className={"contact-trigger" + (open ? " active" : "")}
+        onClick={(e) => {
+          e.stopPropagation()
+          setOpen((prev) => !prev)
+        }}
+      >
+        연락처
+      </button>
+      {open && (
+        <div className="contact-popover" role="tooltip">
+          <a
+            href={`tel:${phone.replace(/-/g, "")}`}
+            onClick={() => setOpen(false)}
+          >
+            {phone}
+          </a>
+          <div className="popover-arrow" />
+        </div>
+      )}
+    </span>
+  )
+}
 
 const checkDevice = () => {
   const userAgent = window.navigator.userAgent
@@ -83,14 +127,6 @@ export const Location = () => {
                 </div>
               </div>
 
-              <div className="bus-block">
-                <div className="block-header">
-                  <MarkerIcon />
-                  <span>최종 목적지</span>
-                </div>
-                <div className="destination">{bus.destination}</div>
-              </div>
-
               <div className="bus-divider" />
 
               <div className="bus-details">
@@ -106,20 +142,14 @@ export const Location = () => {
                   <div className="icon"><PersonIcon /></div>
                   <div className="label">기사님</div>
                   <div className="value">
-                    <span className="name">{bus.driver.name}</span>
-                    <a href={`tel:${bus.driver.phone.replace(/-/g, "")}`}>
-                      {bus.driver.phone}
-                    </a>
+                    {bus.driver.name}, <ContactPopover phone={bus.driver.phone} />
                   </div>
                 </div>
                 <div className="detail-row">
                   <div className="icon"><PersonIcon /></div>
                   <div className="label">인솔자</div>
                   <div className="value">
-                    <span className="name">{bus.escort.name}</span>
-                    <a href={`tel:${bus.escort.phone.replace(/-/g, "")}`}>
-                      {bus.escort.phone}
-                    </a>
+                    {bus.escort.name}, <ContactPopover phone={bus.escort.phone} />
                   </div>
                 </div>
               </div>
