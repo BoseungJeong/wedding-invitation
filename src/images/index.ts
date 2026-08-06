@@ -35,13 +35,12 @@ import image33 from "./1776171414444.jpg"
 import image34 from "./1776171414476.jpg"
 import image35 from "./1776171414505.jpg"
 import image36 from "./1776171414544.jpg"
-import image37 from "./image37.jpg"
-import image38 from "./image38.jpg"
-import image39 from "./image39.jpg"
-import image40 from "./image40.jpg"
-import image41 from "./image41.jpg"
-import image42 from "./image42.jpg"
-import image43 from "./image43.jpg"
+// image37 ~ image43: 파일은 남겨두되 갤러리에서 숨김
+import image44 from "./image44.jpg"
+import image45 from "./image45.jpg"
+import image46 from "./image46.jpg"
+import image47 from "./image47.jpg"
+import image48 from "./image48.jpg"
 
 export const COVER_IMAGE = coverImage
 
@@ -82,11 +81,9 @@ export const GALLERY_IMAGES = [
   image34,
   image35,
   image36,
-  image37,
-  image38,
-  image39,
-  image40,
-  image41,
-  image42,
-  image43,
+  image44,
+  image45,
+  image46,
+  image47,
+  image48,
 ]
