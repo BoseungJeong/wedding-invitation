@@ -35,6 +35,13 @@ import image33 from "./1776171414444.jpg"
 import image34 from "./1776171414476.jpg"
 import image35 from "./1776171414505.jpg"
 import image36 from "./1776171414544.jpg"
+import image37 from "./image37.jpg"
+import image38 from "./image38.jpg"
+import image39 from "./image39.jpg"
+import image40 from "./image40.jpg"
+import image41 from "./image41.jpg"
+import image42 from "./image42.jpg"
+import image43 from "./image43.jpg"
 
 export const COVER_IMAGE = coverImage
 
@@ -75,4 +82,11 @@ export const GALLERY_IMAGES = [
   image34,
   image35,
   image36,
+  image37,
+  image38,
+  image39,
+  image40,
+  image41,
+  image42,
+  image43,
 ]
